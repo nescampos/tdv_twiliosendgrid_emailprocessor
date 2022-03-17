@@ -26,8 +26,8 @@ namespace SendgridProcessor.Controllers
         private void FillRules()
         {
             _rules = new List<EmailRule>();
-            _rules.Add(new EmailRule { AttachmentName = "demo.xlsx", Subject = "Demo Email Finance", To = "finance@sendgrid.techgethr.com", FolderName="Finance" });
-            _rules.Add(new EmailRule { AttachmentName = "demo_hr.xlsx", Subject = "Demo Email Human Resources", To = "humanresources@sendgrid.techgethr.com", FolderName = "HR" });
+            _rules.Add(new EmailRule { AttachmentName = "demo.xlsx", Subject = "Demo Email Finance", To = "finance@sendgrid.techgethr.com", FolderName="Finance", PathFiles=@"C:\Users\ncamp\Desktop\SendGridFiles" });
+            _rules.Add(new EmailRule { AttachmentName = "demo_hr.xlsx", Subject = "Demo Email Human Resources", To = "humanresources@sendgrid.techgethr.com", FolderName = "HR", PathFiles=@"C:\Users\ncamp\Desktop\SendGridFiles" });
         }
 
         [HttpPost]
@@ -47,7 +47,7 @@ namespace SendgridProcessor.Controllers
                                                                 x.To == email_to && x.AttachmentName == file.FileName);
                         if(ruleAvailable != null)
                         {
-                            string filePath = System.IO.Path.Combine(AppDomain.CurrentDomain.GetData("DataDirectory").ToString(), ruleAvailable.FolderName,file.FileName);
+                            string filePath = System.IO.Path.Combine(ruleAvailable.PathFiles, ruleAvailable.FolderName,file.FileName);
                             using (var inputStream = new FileStream(filePath, FileMode.Create))
                             {
                                 // read file to stream
