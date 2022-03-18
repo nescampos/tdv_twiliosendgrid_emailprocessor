@@ -26,8 +26,8 @@ namespace SendgridProcessor.Controllers
         private void FillRules()
         {
             _rules = new List<EmailRule>();
-            _rules.Add(new EmailRule { AttachmentName = "demo.xlsx", Subject = "Demo Email Finance", To = "finance@sendgrid.techgethr.com", FolderName="Finance", PathFiles=@"C:\Users\ncamp\Desktop\SendGridFiles" });
-            _rules.Add(new EmailRule { AttachmentName = "demo_hr.xlsx", Subject = "Demo Email Human Resources", To = "humanresources@sendgrid.techgethr.com", FolderName = "HR", PathFiles=@"C:\Users\ncamp\Desktop\SendGridFiles" });
+            _rules.Add(new EmailRule { AttachmentName = "demo.xlsx", Subject = "Demo Email Finance", To = "finance@<domain and subdomain>", FolderName="Finance", PathFiles=@"<root path>" });
+            _rules.Add(new EmailRule { AttachmentName = "demo_hr.xlsx", Subject = "Demo Email Human Resources", To = "humanresources@<domain and subdomain>", FolderName = "HR", PathFiles=@"<root path>" });
         }
 
         [HttpPost]
